@@ -459,6 +459,67 @@ so_lan_xuat_hien = Counter(mang_so_nguyen)[so_can_dem]
 print(so_lan_xuat_hien)
 
 print("l) Xuất các số xuất hiện n lần trong danh sách")
+n = 2
+# Cách 1
+def print_numbers(mang_so_nguyen, n):
+    count = {}
+    for num in mang_so_nguyen:
+        if num in count:
+            count[num] += 1
+        else:
+            count[num] = 1
+    
+    for num, freq in count.items():
+        if freq == n:
+            print(num)
+print_numbers(mang_so_nguyen, n)
 
+# Cách 2
+from collections import Counter
+def print_numbers(mang_so_nguyen, n):
+    count = Counter(mang_so_nguyen)
+    
+    for num, freq in count.items():
+        if freq == n:
+            print(num)
+print_numbers(mang_so_nguyen, n)
+
+# Cách 3
+def print_numbers(mang_so_nguyen, n):
+    result = [num for num in mang_so_nguyen if mang_so_nguyen.count(num) == n]
+    for num in result:
+        print(num)
+print_numbers(mang_so_nguyen, n)
 
 print("m) Xuất các số xuất hiện nhiều lần nhất trong danh sách")
+# Cách 1
+def print_most_frequent_numbers(mang_so_nguyen):
+    count = {}
+    for num in mang_so_nguyen:
+        if num in count:
+            count[num] += 1
+        else:
+            count[num] = 1
+    max_freq = max(count.values())
+    for num, freq in count.items():
+        if freq == max_freq:
+            print(num)
+print_most_frequent_numbers(mang_so_nguyen)
+
+# Cách 2
+from collections import Counter
+def print_most_frequent_numbers(mang_so_nguyen):
+    count = Counter(mang_so_nguyen)
+    max_freq = max(count.values())
+    for num, freq in count.items():
+        if freq == max_freq:
+            print(num)
+print_most_frequent_numbers(mang_so_nguyen)
+
+# Cách 3
+def print_most_frequent_numbers(mang_so_nguyen):
+    max_freq = max(mang_so_nguyen.count(num) for num in mang_so_nguyen)
+    result = [num for num in mang_so_nguyen if mang_so_nguyen.count(num) == max_freq]
+    for num in result:
+        print(num)
+print_most_frequent_numbers(mang_so_nguyen)
